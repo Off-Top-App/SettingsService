@@ -1,5 +1,6 @@
 <h1>User Settings Microservice</h1>
 <p>RESTful api service that connects to MySQL database and creates/updates user's settings information.</p>
+<p>File Location: /Users/jsc31994/Documents/projects/micro-services/settings-service/SettingsService</p>
 <br>
 <h2>Database Setup</h2>
 <ul>
