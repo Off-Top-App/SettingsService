@@ -1,4 +1,4 @@
-<h1>User Settings Micro Service</h1>
+<h1>User Settings microservice</h1>
 <p>RESTful api service that connects to MySQL database and creates/updates user's settings information.</p>
 <br>
 <h2>Database Setup</h2>
