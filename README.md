@@ -21,8 +21,6 @@
 </ul>
 <h3>MySQL Table Creation</h3>
 <code>DROP TABLE IF EXISTS `settings`;</code><br>
-<code>/*!40101 SET @saved_cs_client     = @@character_set_client */;</code><br>
-<code>/*!50503 SET character_set_client = utf8mb4 */;</code><br>
 <code>CREATE TABLE `settings` (</code><br>
   <code>`id` int NOT NULL AUTO_INCREMENT,</code><br>
   <code>`user_email` varchar(40) NOT NULL,</code><br>
