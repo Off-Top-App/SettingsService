@@ -1,10 +1,10 @@
-const { create, update } = require("./userSetting.service");
+const { createSettingsRow, updateSettingsRow } = require("./userSetting.service");
 
 module.exports = {
    createUserSetting: function (req, res) {
       const body = req.body;
       //will print payload and status message via postman for testing
-      create(body, function (err, results) {
+      createSettingsRow(body, function (err, results) {
          if (err) {
             console.log(err);
             return res.status(500).json({
@@ -22,7 +22,7 @@ module.exports = {
    //uses the update function found in service file
    updateUserSetting: function(req, res){
       const body = req.body;
-      update(body, function(err, results){
+      updateSettingsRow(body, function(err, results){
          if(err){
             console.log(err);
             return res.json({

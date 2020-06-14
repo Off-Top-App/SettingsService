@@ -1,7 +1,7 @@
 const { createPool } = require("mysql");
 
 //Environment variables are used to hide any sensitive information
-const pool = createPool({
+const connectionPool = createPool({
    port: process.env.DB_PORT,
    host: process.env.DB_HOST,
    user: process.env.DB_USER,
@@ -9,4 +9,4 @@ const pool = createPool({
    database: process.env.MYSQL_DB,
 });
 
-module.exports = pool;
+module.exports = connectionPool;

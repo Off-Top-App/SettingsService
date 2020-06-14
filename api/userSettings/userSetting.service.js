@@ -1,7 +1,6 @@
-const pool = require("../../config/database");
+const connectionPool = require("../../config/database");
 
-//object to be updated within our update function
-const options = {
+const settingsObject = {
    app_color: null,
    vibration_type: null,
    default_categories: null,
@@ -9,11 +8,8 @@ const options = {
 }
 
 module.exports = {
-   //'create' function will insert complete row into our table
-   //using our pool's specifications (database, port, etc)
-   create: function (data, callback) {
-      pool.query(
-         //the values will be checked with the lambda function's second parameter (array)
+   createSettingsRow: function (data, callback) {
+      connectionPool.query(
          `insert into settings(user_email, app_color, vibration_type, default_categories, alert_type) values(?,?,?,?,?)`,
          [
             data.user_email,
@@ -22,7 +18,6 @@ module.exports = {
             data.default_categories,
             data.alert_type,
          ],
-         //success or failure messages
          function (error, results, fields) {
             if (error) {
                return callback(error);
@@ -33,19 +28,13 @@ module.exports = {
       );
    },
 
-   //function allows table row to be updated by
-   //data thats being passed around by front end
-   update: function(data, callback){
-      //settings our options data the data being passed in
-      options.app_color = data.app_color;
-      options.vibration_type = data.vibration_type;
-      options.default_categories = data.default_categories;
-      options.alert_type = data.alert_type;
-      //performing the query message
-      pool.query(`update settings set ? where user_email=?`,
-      //passing in the options data into our database
-         [options,data.user_email],
-         //success or failure messages
+   updateSettingsRow: function(data, callback){
+      settingsObject.app_color = data.app_color;
+      settingsObject.vibration_type = data.vibration_type;
+      settingsObject.default_categories = data.default_categories;
+      settingsObject.alert_type = data.alert_type;
+      connectionPool.query(`update settings set ? where user_email=?`,
+         [settingsObject,data.user_email],
          function(error, results, fields){
             if(error){
                return callback(error);
