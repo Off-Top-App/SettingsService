@@ -1,0 +1,24 @@
+{
+  "name": "settingsservice",
+  "version": "1.0.0",
+  "description": "<h1>User Settings Microservice</h1> <p>RESTful api service that connects to MySQL database and creates/updates user's settings information.</p> <p>File Location: /Users/jsc31994/Documents/projects/micro-services/settings-service/SettingsService</p> <br> <h2>Database Setup</h2> <ul>   <li>Application Port = 3000</li>   <li>Database Port = 3306(default)</li>   <li>Host = localhost</li>   <li>Username = root</li>   <li>Password = password</li>   <li>Database Name = userSettings</li>   <li>Table Name = settings</li> </ul>",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Off-Top-App/SettingsService.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Off-Top-App/SettingsService/issues"
+  },
+  "homepage": "https://github.com/Off-Top-App/SettingsService#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
