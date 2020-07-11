@@ -1,40 +1,40 @@
 
 apiVersion: apps/v1
-kind: Deployment                            # Type of the kubernetes resource
+kind: Deployment                          
 metadata:
-  name: settings-db                     # Name of the deployment (Use this name as db host in your application)
-  labels:                                   # Labels applied to this deployment
+  name: settings-db                    
+  labels:                                  
     app: settings-db
 spec:
   selector:
-    matchLabels:                            # This deployment applies to the Pods matching the specified labels
+    matchLabels:                           
       app: settings-db
       tier: mysql
   strategy:
     type: Recreate 
   replicas: 1
-  template:                                 # Template for the pods in this deployment
+  template:                                
     metadata: 
-      labels:                               # labels to be applied to the pods in this deployment 
+      labels:                               
         app: settings-db
         tier: mysql
-    spec:                                   # The spec for the containers that will be run inside the Pods in this deployment
+    spec:                                  
       containers:
-        - image: mysql:5.7                  # The container image
+        - image: mysql:5.7                 
           name: settings-db
-          imagePullPolicy: "IfNotPresent"   # Get it from dockerhub if it is not present in our machine
+          imagePullPolicy: "IfNotPresent"  
 
-          envFrom:                                # Environment variables passed to the container 
-          - secretRef:                            # Read environment variables from kubernetes secrets
+          envFrom:                                
+          - secretRef:                           
               name: settings-db-secret
 
           ports:
-          - containerPort: 3306             # The port that the container exposes 
+          - containerPort: 3306             
             name: settings-db
           volumeMounts:
             - mountPath: /var/lib/mysql
-              name: mysql-persistant-storage # This name should match the name specified in `volumes.name`
-      volumes:                        # A PersistentVolume is mounted as a volume to the Pod  
+              name: mysql-persistant-storage
+      volumes:
       - name: mysql-persistant-storage 
         persistentVolumeClaim:
           claimName: settings-db-pv-claim

@@ -3,13 +3,12 @@ const { createSettingsRow, updateSettingsRow } = require("./userSetting.service"
 module.exports = {
    createUserSetting: function (req, res) {
       const body = req.body;
-      //will print payload and status message via postman for testing
       createSettingsRow(body, function (err, results) {
          if (err) {
             console.log(err);
             return res.status(500).json({
                success: 0,
-               message: "Unsuccessful Database Connection",
+               message: "UNABLE TO CONNECT TO DATABASE",
             });
          } else {
             return res.status(200).json({
@@ -19,7 +18,6 @@ module.exports = {
          }
       });
    },
-   //uses the update function found in service file
    updateUserSetting: function(req, res){
       const body = req.body;
       updateSettingsRow(body, function(err, results){
