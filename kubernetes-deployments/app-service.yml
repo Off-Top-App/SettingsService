@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: settings-service
+  labels:
+    app: settings-service
+spec: 
+  type: NodePort
+  selector:
+    app: settings-service
+  ports:
+  - name: http
+    port: 3000
+    targetPort: 3000

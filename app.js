@@ -8,6 +8,13 @@ app.use(express.json());
 
 app.use("/api/userSettings", userSettingRouter);
 
+
+app.get('/api/userSettings/ping', (req, res, next) => {
+   response = {
+      data: "Settings microservie works!"
+   }
+   res.json(response);
+  });
 app.listen(port, function () {
    console.log("Server running...");
 });
