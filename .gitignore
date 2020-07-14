@@ -1,3 +1,5 @@
 .env
 ./kubernetes-deployments/settings-db-secret.yml
+kubernetes-deployments/settings-db-secret.yml
+
 node_modules
