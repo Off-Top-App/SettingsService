@@ -11,7 +11,7 @@ app.use("/api/userSettings", userSettingRouter);
 
 app.get('/api/userSettings/ping', (req, res, next) => {
    response = {
-      data: "Settings microservie works!"
+      data: "Settings microservice works!"
    }
    res.json(response);
   });
