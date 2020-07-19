@@ -1,0 +1,27 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: settings-service 
+  labels:
+    app: settings-service
+spec:
+  replicas: 1 
+  selector:
+    matchLabels: 
+      app: settings-service 
+  template:
+    metadata:
+      labels:
+        app: settings-service                              
+    spec:
+      containers:
+      - name: settings-service 
+        image: joshisfrlz/settings-service:1.1
+        imagePullPolicy: IfNotPresent
+        ports:
+          - name: http
+            containerPort: 3000
+        envFrom:
+          - secretRef:
+              name: settings-db-secret
+      

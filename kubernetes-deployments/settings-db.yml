@@ -1,0 +1,40 @@
+
+apiVersion: apps/v1
+kind: Deployment                          
+metadata:
+  name: settings-db                    
+  labels:                                  
+    app: settings-db
+spec:
+  selector:
+    matchLabels:                           
+      app: settings-db
+      tier: mysql
+  strategy:
+    type: Recreate 
+  replicas: 1
+  template:                                
+    metadata: 
+      labels:                               
+        app: settings-db
+        tier: mysql
+    spec:                                  
+      containers:
+        - image: mysql:5.7                 
+          name: settings-db
+          imagePullPolicy: "IfNotPresent"  
+
+          envFrom:                                
+          - secretRef:                           
+              name: settings-db-secret
+
+          ports:
+          - containerPort: 3306             
+            name: settings-db
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql-persistant-storage
+      volumes:
+      - name: mysql-persistant-storage 
+        persistentVolumeClaim:
+          claimName: settings-db-pv-claim
